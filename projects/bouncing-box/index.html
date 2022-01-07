@@ -63,6 +63,7 @@
 			// TODO 2 - Variable declarations 
 			var positionX = 0;
 			var points = 0;
+			var speed = 10; 
 
 			
 			/* 
@@ -70,10 +71,9 @@
 			it should move the Box to a new location. If the box drifts off the screen
 			turn it around! 
 			*/
-			function update() {
-			moveBoxTo(positionX); 
-			positionX = positionX + 10; 	
-
+			function update() {  
+			positionX = positionX + speed; 	
+			moveBoxTo(positionX);
 			};
 
 			/* 
@@ -86,6 +86,8 @@
 				 changeBoxText(1);
 				 changeBoxText(points); 
 				 points = points + 1; 
+				 var speed = 3;
+				 
 
 
 
