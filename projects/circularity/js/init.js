@@ -33,8 +33,16 @@ var init = function (window) {
 
         // TODO 3 / 8 : Call the drawCircle() function 
            for (var i = 0; i < 100; i++){
-               drawCircle(i);
+               drawCircle();
            }
+
+           /* I created a loop to get rid of this repeated code
+           drawCircle();
+           drawCircle();
+           drawCircle();
+           drawCircle();
+           drawCircle();
+         */
 
         ////////////////////////////////////////////////////////////
         ///////////////// PROGRAM LOGIC ////////////////////////////
@@ -47,25 +55,30 @@ var init = function (window) {
         */
         function update() {
             // TODO 4 : Update the circle's position //
+            /* This gets deleted because this is repeated code and we iterated over the whole array with a loop to make there be less code.            
             physikz.updatePosition(circles[0]);
             physikz.updatePosition(circles[1]);
             physikz.updatePosition(circles[2]);
             physikz.updatePosition(circles[3]);
             physikz.updatePosition(circles[4]);
-
+            */
             // TODO 5 / 10 : Call game.checkCirclePosition() on your circles.
+            /* This gets deleted because this is repeated code and we iterated over the whole array with a loop to make there be less code. 
            game.checkCirclePosition(circles[0]);
            game.checkCirclePosition(circles[1]); 
            game.checkCirclePosition(circles[2]);
            game.checkCirclePosition(circles[3]);
            game.checkCirclePosition(circles[4]);
+           */
 
             // TODO 9 : Iterate over the array
-           for (var i = 0; i < myArraylength, i++) {
-               var eachValue = myArray[i];
-           
-           // code to repeat using eachValue 
-        }
+            //This iterates over t5he entire array so that there is no repeated code. 
+           for (var k = 0; k < circles.length; k++) {
+            physikz.updatePosition(circles[k]);   
+            game.checkCirclePosition(circles[k]);
+           }
+        
+        }  
     
         /* 
         This Function should check the position of a circle that is passed to the 
@@ -81,7 +94,7 @@ var init = function (window) {
            // if the circle has gone past the LEFT side of the screen then place it on the RIGHT 
             if (circle.x < 0) {
                circle.x = canvas.width; 
-           }
+            }
             // if the circle has gone past the TOP side of the screen then place it on the BOTTOM 
             if (circle.y > canvas.height) {
                 circle.y = 0; 
