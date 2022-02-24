@@ -26,8 +26,7 @@ var background = function (window) {
         var background;
         
         // ANIMATION VARIABLES HERE:
-        
-     
+        var tree;
         // called at the start of game and whenever the page is resized
         // add objects for display in background. draws each image added to the background once
         function render() {
@@ -36,22 +35,38 @@ var background = function (window) {
             // TODO: 2 - Part 2
             // this fills the background with a obnoxious yellow
             // you should modify this to suit your game
-            var backgroundFill = draw.rect(canvasWidth,groundY,'Red');
+            var backgroundFill = draw.rect(canvasWidth,groundY,'Black');
             background.addChild(backgroundFill);
             
             // TODO: 3 - Add a moon and starfield
+            
+            for(var i = 0;i <= 100; i++){ // a for loop is created that stored 1       500 circles
+                var circle = draw.circle(5,'white','LightGray',2); // the variable circle is declared and it stores code to draw the circle
+                circle.x = canvasWidth*Math.random(); // multpilies canvasWidth * a random decimal between .1 and .99 and assigns it to circle.x
+                circle.y = groundY*Math.random(); //  multpilies groundY * a random decimal between .1 and .99 and assigns it to circle.y
+                background.addChild(circle); // circle is drawn on the canvas
+            }
+           
             var moon = draw.bitmap('img/moon.png'); // created a variable moon. draw.bitmap draws the image and stores it in
-            moon.x = 700; // this placed the moon on the ride side
-            moon.y = 50; // this placed the moon at the top
+            moon.x = canvasWidth - 300; // this placed the moon on the ride side
+            moon.y = groundY - 450; // this placed the moon at the top
             moon.scaleX = 0.5; // width of the moon 
             moon.scaleY = 0.5; // height of the moon
-            background.addChild(moon);  
+            background.addChild(moon); // adds the moon to the canvas so it is visible
+
+
             
             // TODO 5: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
             
             
             // TODO 4: Part 1 - Add a tree
-            
+            tree = draw.bitmap('img/tree.png'); // variable created the tree
+            tree.x = 200; // width of the tree
+            tree.y = 337; // height of the tree
+            tree.scaleX = 0.5; // heigth of the tree
+            tree.scaleY = 0.5; // width of the tree
+            background.addChild(tree); // creates the background 
+
             
         } // end of render function - DO NOT DELETE
         
@@ -65,7 +80,11 @@ var background = function (window) {
             var groundY = ground.y;
             
             // TODO 4: Part 2 - Move the tree!
-            
+
+            tree.x = tree.x - 1; // taking the value of tree.x (x position) and decreasing by 1 pixel every time the update function run. Makes it move left.
+            if(tree.x < -200) { // if the x position of the tree exeeds -200, then the x position of the tree will be reset to canvasWidth 
+                tree.x = canvasWidth; // the x position of the tree is assigned to the canvasWidth
+            }
             
             // TODO 5: Part 2 - Parallax
             
