@@ -1,0 +1,57 @@
+function createEnemy(x, y){
+    var enemy = game.createGameItem('enemy',25); // creating the game item and storing it in the varibale reward
+    var redSquare = draw.rect(50,50,'red'); // creates rectangle and stores as redSquare
+    redSquare.x = -50; 
+    redSquare.y = -50;
+    enemy.addChild(redSquare);
+
+    enemy.x = x;
+    enemy.y = y;
+     
+    game.addGameItem(enemy); // adds reward to the game
+
+     enemy.velocityX = -1; // this causes the reward to move one pixel to the left on the x position
+
+    enemy.rotationalVelocity = 1;
+
+    enemy.onPlayerCollision = function() {
+    console.log('The enemy has hit Halle');
+    game.changeIntegrity(-10);
+    game.increaseScore(10);
+    };   
+    enemy.onProjectileCollision = function() {
+    console.log('The projectile has hit reward');
+    game.changeIntegrity(-10);
+    enemy.fadeOut();
+    };
+  }
+
+
+function createReward(x, y){
+ var reward = game.createGameItem('reward',25); // creating the game item and storing it in the varibale reward
+ var blueSquare = draw.rect(50,50,'blue'); // creates rectangle and stores as redSquare
+ blueSquare.x = -50; 
+ blueSquare.y = -50;
+ reward.addChild(blueSquare);
+
+ reward.x = x;
+ reward.y = y;
+  
+ game.addGameItem(reward); // adds reward to the game
+
+  reward.velocityX = -1; // this causes the reward to move one pixel to the left on the x position
+
+ reward.rotationalVelocity = 1;
+
+ reward.onPlayerCollision = function() {
+ console.log('The reward has hit Halle');
+ game.changeIntegrity(100);
+ game.increaseScore(10);
+ };   
+ reward.onProjectileCollision = function() {
+ console.log('The projectile has hit reward');
+ game.changeIntegrity(100);
+ game.increaseScore(10000);
+ reward.fadeOut();
+ };
+}
