@@ -16,17 +16,24 @@ var level01 = function (window) {
             "number": 1, 
             "speed": -3,
             "gameItems": [
-                { "type": "sawblade", "x": 600, "y": groundY - 50},
-                { "type": "sawblade", "x": 600, "y": groundY - 50},
+                { "type": "sawblade", "x": 500, "y": groundY - 50},
+                { "type": "sawblade", "x": 700, "y": groundY - 50},
                 { "type": "sawblade", "x": 900, "y": groundY - 50},
                 
-                { "type": "enemy", "x": 400, "y": groundY - 50},
-                { "type": "enemy", "x": 500, "y": groundY - 50},
+                { "type": "enemy", "x": 450, "y": groundY - 50},
+                { "type": "enemy", "x": 250, "y": groundY - 50},
                 { "type": "enemy", "x": 700, "y": groundY - 50},
+                { "type": "enemy", "x": 550, "y": groundY - 50},
+                { "type": "enemy", "x": 1000, "y": groundY - 50},
+                { "type": "enemy", "x": 600, "y": groundY - 50},
+                { "type": "enemy", "x": 1200, "y": groundY - 50},
+                { "type": "enemy", "x": 1500, "y": groundY - 50},
+                { "type": "enemy", "x": 2000, "y": groundY - 50},
+
             
                 { "type": "reward", "x": 600, "y": groundY - 50},
-                { "type": "reward", "x": 800, "y": groundY - 50},
-                { "type": "reward", "x": 1000, "y": groundY - 50},
+                { "type": "reward", "x": 1500, "y": groundY - 50},
+                { "type": "reward", "x": 900, "y": groundY - 50},
             ]
         };
         window.levelData = levelData;
@@ -37,26 +44,27 @@ var level01 = function (window) {
         // BEGIN EDITING YOUR CODE HERE
         
         function createSawBlade(x, y){
-            var hitZoneSize = 25; //creates the size of the hitzone
+            var hitZoneSize = 15; //creates the size of the hitzone
             var damageFromObstacle = 10; //sets the damage of the obstacle
             var sawBladeHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); //created the hitzone and stores it in the variable
-            sawBladeHitZone.x = x; // the x position of the hitzone
-            sawBladeHitZone.y = y; // the y position of the hitzone
+            sawBladeHitZone.x = 10; // the x position of the hitzone
+            sawBladeHitZone.y = 10; // the y position of the hitzone
             game.addGameItem(sawBladeHitZone); // add the hitzone to the game
             
             var obstacleImage = draw.bitmap('img/sawblade.png'); // 
             sawBladeHitZone.addChild(obstacleImage); // add the image to the hitzone so we can see 
-            obstacleImage.x = -25; // tweaks the image 25 pixels to the left
-            obstacleImage.y = -25; // tweaks the image 25 pixels up
+            obstacleImage.x = -50; // tweaks the image 25 pixels to the left
+            obstacleImage.y = -50; // tweaks the image 25 pixels up
             sawBladeHitZone.rotationalVelocity = 6;
         }
 
         function createEnemy(x, y){
             var enemy = game.createGameItem('enemy',25); // creating the game item and storing it in the varibale reward
-            var redSquare = draw.rect(50,50,'red'); // creates rectangle and stores as redSquare
-            redSquare.x = -50; 
-            redSquare.y = -50;
+            var redSquare = draw.bitmap('img/ben.png');
+            redSquare.x = -25; 
+            redSquare.y = -25;
             enemy.addChild(redSquare);
+            
    
             enemy.x = x;
             enemy.y = y;
@@ -65,7 +73,9 @@ var level01 = function (window) {
    
              enemy.velocityX = -1; // this causes the reward to move one pixel to the left on the x position
    
-            enemy.rotationalVelocity = 1;
+
+            enemy.scaleX = 2.0;
+            enemy.scaleY = 2.0;
    
             enemy.onPlayerCollision = function() {
             console.log('The enemy has hit Halle');
@@ -83,8 +93,9 @@ var level01 = function (window) {
        function createReward(x, y){
          var reward = game.createGameItem('reward',25); // creating the game item and storing it in the varibale reward
          var blueSquare = draw.rect(50,50,'blue'); // creates rectangle and stores as redSquare
-         blueSquare.x = -50; 
-         blueSquare.y = -50;
+         var blueSquare
+         blueSquare.x = -25; 
+         blueSquare.y = -25;
          reward.addChild(blueSquare);
 
          reward.x = x;
@@ -94,7 +105,7 @@ var level01 = function (window) {
 
           reward.velocityX = -1; // this causes the reward to move one pixel to the left on the x position
 
-         reward.rotationalVelocity = 1;
+         reward.rotationalVelocity = 15;
 
          reward.onPlayerCollision = function() {
          console.log('The reward has hit Halle');
