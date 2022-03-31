@@ -16,9 +16,9 @@ var level01 = function (window) {
             "number": 1, 
             "speed": -3,
             "gameItems": [
+                { "type": "sawblade", "x": 300, "y": groundY - 50},
                 { "type": "sawblade", "x": 500, "y": groundY - 50},
-                { "type": "sawblade", "x": 700, "y": groundY - 50},
-                { "type": "sawblade", "x": 900, "y": groundY - 50},
+                { "type": "sawblade", "x": 800, "y": groundY - 50},
                 
                 { "type": "enemy", "x": 450, "y": groundY - 50},
                 { "type": "enemy", "x": 250, "y": groundY - 50},
@@ -26,14 +26,10 @@ var level01 = function (window) {
                 { "type": "enemy", "x": 550, "y": groundY - 50},
                 { "type": "enemy", "x": 1000, "y": groundY - 50},
                 { "type": "enemy", "x": 600, "y": groundY - 50},
-                { "type": "enemy", "x": 1200, "y": groundY - 50},
-                { "type": "enemy", "x": 1500, "y": groundY - 50},
-                { "type": "enemy", "x": 2000, "y": groundY - 50},
-
             
-                { "type": "reward", "x": 600, "y": groundY - 50},
-                { "type": "reward", "x": 1500, "y": groundY - 50},
-                { "type": "reward", "x": 900, "y": groundY - 50},
+                { "type": "reward", "x": 950, "y": groundY - 50},
+                { "type": "reward", "x": 2000, "y": groundY - 50},
+                { "type": "reward", "x": 1800, "y": groundY - 50},
             ]
         };
         window.levelData = levelData;
@@ -45,13 +41,13 @@ var level01 = function (window) {
         
         function createSawBlade(x, y){
             var hitZoneSize = 15; //creates the size of the hitzone
-            var damageFromObstacle = 10; //sets the damage of the obstacle
+            var damageFromObstacle = 100; //sets the damage of the obstacle
             var sawBladeHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); //created the hitzone and stores it in the variable
             sawBladeHitZone.x = 10; // the x position of the hitzone
             sawBladeHitZone.y = 10; // the y position of the hitzone
             game.addGameItem(sawBladeHitZone); // add the hitzone to the game
             
-            var obstacleImage = draw.bitmap('img/sawblade.png'); // 
+            var obstacleImage = draw.bitmap('img/putin.png'); // 
             sawBladeHitZone.addChild(obstacleImage); // add the image to the hitzone so we can see 
             obstacleImage.x = -50; // tweaks the image 25 pixels to the left
             obstacleImage.y = -50; // tweaks the image 25 pixels up
